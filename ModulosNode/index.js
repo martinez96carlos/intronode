@@ -16,12 +16,25 @@
 // });
 // console.log('ultima linea de código');
 
-const fs = require('fs');
+// const fs = require('fs');
 
-fs.readFile('./Texto.txt',function(err,data){
-    if(err){
-        console.log(err);
-    }
-    console.log(data.toString());
-})
+// fs.readFile('./Texto.txt',function(err,data){
+//     if(err){
+//         console.log(err);
+//     }
+//     console.log(data.toString());
+// })
 
+const http = require('http');
+const colors = require('colors');
+
+const handleServer = function(req, res){
+    res.writeHead(200,{'Content-type': 'text/html' });
+    res.write('<h1>Hola mundo desde node js</h1>');
+    res.end();
+}
+const server = http.createServer(handleServer);
+
+server.listen(3000,function(){
+    console.log('Server on port 3000'.yellow);
+});
